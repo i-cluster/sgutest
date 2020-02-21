@@ -1,10 +1,9 @@
-<h1>So근So근 강의평가</h1>
+{% extends 'sgapp/base.html' %}
 
 {% block content %}
 
 <div class="container">
 
-{% endblock %}
 <br>
 {% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
 {{user.last_name}} {{user.first_name}}님 환영합니다. <!-- 다음과같이 출력 -->
@@ -32,3 +31,5 @@
 {% for c in crs %}
     강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
 {% endfor %}
+
+{% endblock %}
