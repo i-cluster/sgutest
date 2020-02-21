@@ -33,6 +33,6 @@ urlpatterns = [
     path('edit/<int:crs_id>', views.edit, name="edit"),
     path('delete/<int:crs_id>', views.delete, name="delete"),
     path('c_create/<int:crs_id>', views.c_create, name="c_create"),
-    path('search', views.search, name="search"),
+    path('search/', views.search, name="search"),
     path('c_like/<int:crs_id>', views.like, name="c_like")
 ]
