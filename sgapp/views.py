@@ -57,8 +57,7 @@ def c_create(request, crs_id):
     if cform.is_valid():
         cmt = cform.save(commit=False)
         cmt.crs = crs
-        if not cform.data['author']:
-            crs.author = request.user
+        cmt.author = request.user
         cmt.save()
     return redirect('detail', crs_id=crs.id)
 

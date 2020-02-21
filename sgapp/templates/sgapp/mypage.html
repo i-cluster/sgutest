@@ -2,12 +2,11 @@
 
 {% block content %}
 
-{{user.last_name}} {{user.first_name}}님의 페이지입니다.
-<br>
+<div class="container">
+    {{user.last_name}}{{user.first_name}}님의 페이지입니다.
 <br>
 
 id : {{user.last_name}} {{user.first_name}}
-<br>
 <br>
 <form method="POST" class="profile" enctype="multipart/form-data">
     {% csrf_token %}
@@ -18,7 +17,7 @@ id : {{user.last_name}} {{user.first_name}}
     <img src="{{ pf.photo.url }}" height=200>
 {% endif %}
 
-<br>
-<br>
+</div>
+
 
 {% endblock %}

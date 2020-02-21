@@ -2,22 +2,27 @@
 
 {% block content %}
 
-강의명 : {{crs.name}}
-담당교수 : {{crs.prof}}
-학부 : {{crs.dep}}
-한줄평 : {{crs.eval}}<br>
-<a href="{% url 'edit' crs.id %}">수정하기</a><br>
-<a href="{% url 'delete' crs.id %}">삭제하기</a><br><br>
-
-<a href="{% url 'c_like' crs.id %}">좋아요</a><br><br>
+<div class="container">
+    {{crs.name}} : {{crs.prof}} | {{crs.dep}}
+    <br>
+    {{crs.eval}}
+    <br>
+    <br>
+    <a href="{% url 'edit' crs.id %}">수정하기</a> 
+    <a href="{% url 'delete' crs.id %}">삭제하기</a>
+    <br><br>
+    <a href="{% url 'c_like' crs.id %}">좋아요</a>
 {{like.count}}명이 좋아합니다.
 '좋아요'한 사람 : {% for l in like %} {{l.author}} {% endfor %}
+<br><br>
 
 <form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
     {% csrf_token %}
     내용 : {{cform.content}}
-    작성자 : {{cform.author}}
-    <input type="submit" value="한줄평 작성">
+    <!-- 
+        작성자 : {{cform.author}}
+    -->
+    <input type="submit" value="댓글">
 </form><br>
 
 {% for cmt in cmt %}
@@ -28,6 +33,6 @@
     No comment yet.<br>
 {% endfor %}
 
-<a href="{% url 'home' %}">back</a>
+</div>
 
 {% endblock %}

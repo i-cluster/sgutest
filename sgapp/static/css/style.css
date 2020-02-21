@@ -76,6 +76,12 @@ body{
     margin: 10px auto;
 }
 
+.container-1{
+    width: 80%;
+    margin: 10px auto;
+}
+
+/* 말풍선 모양 */
 .arrow_box {
 	position: relative;
 	background: white;
