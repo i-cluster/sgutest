@@ -1,0 +1,19 @@
+{{user.last_name}} {{user.first_name}}님의 페이지입니다.
+<br>
+<br>
+
+id : {{user.last_name}} {{user.first_name}}
+<br>
+<br>
+<form method="POST" class="profile" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% if pf.photo %}
+    <img src="{{ pf.photo.url }}" height=200>
+{% endif %}
+
+<br>
+<br>
+<a href="{% url 'home' %}">홈으로</a> 
