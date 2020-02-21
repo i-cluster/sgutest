@@ -1,31 +1,16 @@
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends 'sgapp/base.html' %}
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <!-- Local CSS -->
-    <link rel="stylesheet" type="text/css" href="{% static 'sogeuna/css/style.css' %}" />
-    <!-- Icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
-    <title>So근So근</title>
-</head>
-
-<body class="">
-    <div class="header">
-        
-    </div>
+{% block content %}
 
     <div class="container">
+    <!-- Navbar에 검색창 있어서 주석처리했습니다~ 
         <form class="form-inline justify-content-md-center w-sm-50">
             <input type="text" class="form-control w-50" value="" placeholder="" >
             <div class="input-group-append">
               <button class="btn btn-outline-info" type="button" id="button-addon2">검색</button>
             </div>
         </form>
+    -->
         <div class="row row-cols-1 row-cols-sm-2 search-list">
             <div class="col py-2">
                 <a href="#" class="btn btn-light btn-block h-100 active">
@@ -66,22 +51,7 @@
     강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
     {% endfor %}
 
-    <a href="{% url 'home' %}">back</a><br>
-
-
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"></script>
-</body>
-</html>
+{% endblock %}
 
 
 

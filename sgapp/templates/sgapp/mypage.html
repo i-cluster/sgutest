@@ -1,3 +1,7 @@
+{% extends 'sgapp/base.html' %}
+
+{% block content %}
+
 {{user.last_name}} {{user.first_name}}님의 페이지입니다.
 <br>
 <br>
@@ -17,3 +21,5 @@ id : {{user.last_name}} {{user.first_name}}
 <br>
 <br>
 <a href="{% url 'home' %}">홈으로</a> 
+
+{% endblock %}

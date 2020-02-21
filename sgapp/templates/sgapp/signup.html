@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+{% extends 'sgapp/base.html' %}
+
+{% block content %} 
 {% if error %}
 <h3 style="color:red">{{error}}</h3>
 {% endif %}
@@ -16,5 +12,5 @@
 <input type="submit" value="회원가입">
 
 </form>
-</body>
-</html>
+
+{% endblock %}
