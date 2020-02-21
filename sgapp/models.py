@@ -15,6 +15,7 @@ class Comment(models.Model):
     objects = models.Manager()
     crs = models.ForeignKey('sgapp.Course', on_delete=models.CASCADE, related_name='comment')
     content = models.CharField(max_length=300)
+    score = models.IntegerField(default=0)
     date = models.DateTimeField(default=timezone.now)
     author = models.CharField(max_length=30, null=True, blank=True)
 
