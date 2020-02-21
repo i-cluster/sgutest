@@ -1,0 +1,16 @@
+<a href="{% url 'new' %}">new</a><br>
+
+<form action="{% url 'search' %}" method='GET'>
+	Search : <input type='search' name='search'><br>
+    <input type="radio" id="name" name="cate" value="name">
+    <label for="name">Course</label><br>
+    <input type="radio" id="prof" name="cate" value="prof">
+    <label for="prof">Professor</label><br>
+    <input type="radio" id="dep" name="cate" value="dep">
+    <label for="dep">Department</label>
+	<input type='submit' value='search'>
+</form>
+
+{% for c in crs %}
+    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
+{% endfor %}

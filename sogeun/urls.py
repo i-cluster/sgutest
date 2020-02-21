@@ -15,7 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from sgapp import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', views.home, name="home"),
+    path('new', views.new, name="new"),
+    path('<int:crs_id>', views.detail, name="detail"),
+    path('edit/<int:crs_id>', views.edit, name="edit"),
+    path('delete/<int:crs_id>', views.delete, name="delete"),
+    path('c_create/<int:crs_id>', views.c_create, name="c_create"),
+    path('search', views.search, name="search"),
+    path('c_like/<int:crs_id>', views.like, name="c_like")
 ]

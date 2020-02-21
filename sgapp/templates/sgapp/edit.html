@@ -1,0 +1,8 @@
+<form method="POST" class="course-form">
+    {% csrf_token %}
+    강의명 : {{crs.name}}
+    교수 : {{crs.prof}}
+    학부 : {{crs.dep}}
+    강의평 : {{crs.eval}}
+    <button type="submit">Save</button>
+</form>

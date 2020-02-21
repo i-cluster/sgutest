@@ -7,7 +7,7 @@ from .forms import CourseForm, CommentForm
 
 def home(request):
     crs = Course.objects.all()
-    return render(request, 'sogeuna/home.html', {'crs':crs})
+    return render(request, 'sgapp/home.html', {'crs':crs})
 
 def new(request):
     if request.method == 'POST':
@@ -19,14 +19,14 @@ def new(request):
             return redirect('/'+str(crs.id))
     else:
         form = CourseForm()
-        return render(request, 'sogeuna/new.html',{'crs':form})
+        return render(request, 'sgapp/new.html',{'crs':form})
 
 def detail(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
     form = CommentForm()
     cmt = Comment.objects.filter(crs=crs)
     like = Like_course.objects.filter(course=crs)
-    return render(request, 'sogeuna/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'like':like})
+    return render(request, 'sgapp/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'like':like})
 
 def edit(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
@@ -39,7 +39,7 @@ def edit(request, crs_id):
             return redirect('detail', crs_id=c.id)
     else:
         form = CourseForm(instance=crs)
-        return render(request, 'sogeuna/edit.html', {'crs':form})
+        return render(request, 'sgapp/edit.html', {'crs':form})
 
 def delete(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
@@ -63,7 +63,7 @@ def search(request):
     sc = {f"{c}__contains":s}
     if s:
         crs = Course.objects.filter(**sc)
-        return render(request, 'sogeuna/search.html', {'crs':crs})
+        return render(request, 'sgapp/search.html', {'crs':crs})
 
 def like(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)

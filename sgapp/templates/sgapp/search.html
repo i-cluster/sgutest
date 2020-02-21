@@ -1,0 +1,5 @@
+{% for c in crs %}
+    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
+{% endfor %}
+
+<a href="{% url 'home' %}">back</a><br>
