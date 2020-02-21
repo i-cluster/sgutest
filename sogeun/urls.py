@@ -17,10 +17,17 @@ from django.contrib import admin
 from django.urls import path
 from sgapp import views
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name="home"),
     path('new', views.new, name="new"),
+    path('signup/', views.signup, name="signup"),
+    path('signout/', views.signout, name="signout"),
+    path('login/', views.signin, name="signin"),
+    path('mypage/', views.mypage, name="mypage"),
     path('<int:crs_id>', views.detail, name="detail"),
     path('edit/<int:crs_id>', views.edit, name="edit"),
     path('delete/<int:crs_id>', views.delete, name="delete"),
