@@ -19,9 +19,11 @@ class Comment(models.Model):
     author = models.CharField(max_length=30, null=True, blank=True)
 
 class Like(models.Model):
+    objects = models.Manager()
     like = models.BooleanField(default=False)
 
 class Like_course(models.Model):
+    objects = models.Manager()
     like = models.ForeignKey('sgapp.Like', on_delete=models.CASCADE)
     course = models.ForeignKey('sgapp.Course', on_delete=models.CASCADE)
     author = models.CharField(max_length=30, null=True, blank=True)
