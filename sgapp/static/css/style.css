@@ -1,0 +1,61 @@
+
+/*LOGO FONT*/
+@font-face { 
+    font-family: 'Recipekorea'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+@font-face { 
+    font-family: 'MapoPeacefull'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+button.navbar-toggler:focus{
+    outline-color: #17A2B8;
+}
+
+a.nav-title{
+    color: #17A2B8;
+    font-family: 'Recipekorea'; 
+    padding-right: 2rem;
+
+}
+
+body{
+    font-family: 'MapoPeacefull'; 
+}
+
+.navnav{
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: .5rem 1rem;
+}
+
+
+.nav-nav {
+    display: flex;
+    padding-left: 4rem;
+    margin-bottom: 0;
+    list-style: none;
+    color: white;
+}
+
+.nav-link {
+    color: rgb(207, 207, 207);
+}
+
+.nav-in {
+    float: right;
+}
+
+
+
+
