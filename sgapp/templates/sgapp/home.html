@@ -4,32 +4,13 @@
 
 <div class="container">
 
-<br>
-{% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
-{{user.last_name}} {{user.first_name}}님 환영합니다. <!-- 다음과같이 출력 -->
-<a href="{% url 'signout' %}">로그아웃</a> <!-- 로그아웃이 뜨도록 한다. -->
-<a href="{% url 'mypage' %}">마이페이지</a>
-{% else %} <!-- 로그인이 되어있지않다면 -->
-<a href="{% url 'signin' %}">로그인</a> <!-- 로그인과-->
-<a href="{% url 'signup' %}">회원가입</a> <!-- 회원가입이 뜨도록 한다. -->
-{% endif %}
-<hr> <!-- 윗부분(고정) -->
-
-<a href="{% url 'new' %}">new</a><br>
-
-<form action="{% url 'search' %}" method='GET'>
-	Search : <input type='search' name='search'><br>
-    <input type="radio" id="name" name="cate" value="name">
-    <label for="name">Course</label><br>
-    <input type="radio" id="prof" name="cate" value="prof">
-    <label for="prof">Professor</label><br>
-    <input type="radio" id="dep" name="cate" value="dep">
-    <label for="dep">Department</label>
-	<input type='submit' value='search'>
-</form>
 
 {% for c in crs %}
-    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
+    강의명 : {{c.name}} 교수 : {{c.prof}} 
+    <br>
+    <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
 {% endfor %}
+
+</div>
 
 {% endblock %}
