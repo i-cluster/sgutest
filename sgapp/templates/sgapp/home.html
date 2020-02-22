@@ -10,10 +10,18 @@
 
     {% for c in crs %}
     <div class="arrow_box">
-        <h3>{{c.name}}</h3>
-        교수 : {{c.prof}} | 학부 : {{c.dep}}<br>
-        평가 : {{c.summary}}...<br>
-        <a href="{% url 'detail' c.id %}" >자세히 보기</a> <br>
+        <div class="section">
+              <a class="article" href="{% url 'detail' c.id %}">
+                <h3>{{c.name}}</h3>
+                <p class="rate">
+                    <span class="star">
+                        <span class="on" style="width: 20%;"></span>
+                    </span>
+                </p>
+                교수 : {{c.prof}} | 학부 : {{c.dep}}<br>
+                평가 : {{c.summary}}...<br>
+            </a>
+        </div>
     </div>
     {% endfor %}
 </div>
@@ -41,10 +49,6 @@
 
 
 
-
-
-
-
-
-
 {% endblock %}
+
+
