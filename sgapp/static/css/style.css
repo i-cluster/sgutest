@@ -30,10 +30,10 @@ body{
 
 a:link { 
     text-decoration:none;
-    color: #343A40 !important; 
+    color:white; 
 }
 a{
-    color: #343A40 !important; 
+    color: white ; 
 }
 a:hover{
     color: #17A2B8 !important;
@@ -107,6 +107,7 @@ a.nav-title{
 }
 
 .articles, .article {
+    color: #212529 !important;
     position: relative;
     display: block;
     margin: 0 8px;
@@ -146,3 +147,7 @@ a.nav-title{
 	margin-left: -36px;
 }
 
+/* detail */
+a.like{
+    color:#212529;
+}
