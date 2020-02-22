@@ -1,17 +1,9 @@
 {% extends 'sgapp/base.html' %}
 
 {% block content %}
-
     <div class="container">
-    <!-- Navbar에 검색창 있어서 주석처리했습니다~ 
-        <form class="form-inline justify-content-md-center w-sm-50">
-            <input type="text" class="form-control w-50" value="" placeholder="" >
-            <div class="input-group-append">
-              <button class="btn btn-outline-info" type="button" id="button-addon2">검색</button>
-            </div>
-        </form>
-    -->
         <div class="row row-cols-1 row-cols-sm-2 search-list">
+            
             <div class="col py-2">
                 <a href="#" class="btn btn-light btn-block h-100 active">
                     <h4>경영영어라이팅</h4>
@@ -41,18 +33,26 @@
                     <span class="badge badge-primary badge-pill">4.5</span>
                 </a>
             </div>
-           
+            
+            {% for c in crs %}
+            <div class="col py-2">
+                <a href="{% url 'detail' c.id %}" class="btn btn-light btn-block h-100 active">
+                    <h4>{{c.name}}</h4>
+                    {{c.prof}}
+                    <span class="badge badge-primary badge-pill">4.5</span>
+                </a>
+            </div>
+            {% endfor %}
+
         </div>
     </div>
 
-
-    
-    {% for c in crs %}
-    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
-    {% endfor %}
 
 {% endblock %}
 
 
 
-
+<!-- 
+{% for c in crs %}
+강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
+{% endfor %} -->
