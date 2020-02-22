@@ -1,45 +1,49 @@
 {% extends 'sgapp/base.html' %}
 
 {% block content %}
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 search-list">
+<div class="search-title">
+    <h3>검색결과</h3>
+</div>
+    <div class="container result_container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 search-list">
             
-            <div class="col py-2">
-                <a href="#" class="btn btn-light btn-block h-100 active">
+            <div class="col">
+                <a href="#" class="btn btn-block h-100 active">
                     <h4>경영영어라이팅</h4>
                     김이권
                     <span class="badge badge-primary badge-pill">3.5</span>
                 </a>
             </div>
-            <div class="col py-2">
-                <a href="#" class="btn btn-light btn-block h-100 active">
+            <div class="col">
+                <a href="#" class="btn btn-block h-100 active">
                     <h4>경제학도를위한영어쓰기와말하기</h4>
                     Kim, Young-il
                     <span class="badge badge-primary badge-pill">4.5</span>
                 </a>
             </div>
-            <div class="col py-2">
-                <a href="#" class="btn btn-light btn-block h-100 active">
+            <div class="col">
+                <a href="#" class="btn btn-block h-100 active">
                     <h4>경제학도를위한영어쓰기와말하기</h4>
                     우경옥
                     <span class="badge badge-primary badge-pill">4.5</span>
                 </a>
             </div>
 
-            <div class="col py-2">
-                <a href="#" class="btn btn-light btn-block h-100 active">
+            <div class="col">
+                <a href="#" class="btn btn-block h-100 active">
                     <h4>경제학도를위한영어쓰기와말하기</h4>
                     이강오
                     <span class="badge badge-primary badge-pill">4.5</span>
                 </a>
             </div>
             
+            <!-- 나중에 이 부분만 살리면 됨 -->
             {% for c in crs %}
-            <div class="col py-2">
-                <a href="{% url 'detail' c.id %}" class="btn btn-light btn-block h-100 active">
+            <div class="col">
+                <a href="{% url 'detail' c.id %}" class="btn btn-block h-100 active">
                     <h4>{{c.name}}</h4>
                     {{c.prof}}
-                    <span class="badge badge-primary badge-pill">4.5</span>
+                    <span class="badge badge-primary badge-pill"></span>
                 </a>
             </div>
             {% endfor %}
