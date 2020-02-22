@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container">
+<<<<<<< HEAD
     <h3>{{crs.name}}</h3>
     교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
     평가 : {{crs.eval}}<br>
@@ -23,6 +24,19 @@
 
 {{alk.count}}명이 좋아합니다.
 '좋아요'한 사람 : {% for l in alk %} {{l.author}} {% endfor %}
+=======
+    {{crs.name}} : {{crs.prof}} | {{crs.dep}}
+    <br>
+    {{crs.eval}}
+    <br>
+    <br>
+    <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
+    <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
+    <br><br>
+    <a class="like" href="{% url 'c_like' crs.id %}">좋아요</a>
+{{like.count}}명이 좋아합니다.
+'좋아요'한 사람 : {% for l in like %} {{l.author}} {% endfor %}
+>>>>>>> 6ae098cb6c2bde92699d23d3c3a6b2efce2aa94b
 <br><br>
 
 <a href="{% url 'home' %}">뒤로가기</a><br><br>
@@ -52,7 +66,16 @@
 {% empty %}
     No comment yet.<br>
 {% endfor %}
+<br>
+<br>
+
+
+
 
 </div>
+
+
+
+
 
 {% endblock %}
