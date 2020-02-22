@@ -1,7 +1,11 @@
 {% extends 'sgapp/base.html' %}
 
 {% block content %}
-
+<div class="py-5 text-center">
+    <h2>강의평가 등록</h2>
+    <p class="lead">새로운 강의평을 추가해 주세요.</p>
+ </div>
+    <!-- </div>
 <div class="container-1">
     <form method="POST" class="course-form">
         {% csrf_token %}
@@ -16,8 +20,34 @@
         <button type="submit">Save</button>
     </form>
 
+</div> -->
+
+
+<div class="container">
+
+    <form method="POST" class="course-form">
+        {% csrf_token %}
+        강의명 : 
+        <input class="form-control" type="text" name="name" maxlength="50" required="" id="{{crs.name.id_for_label}}">
+        <br>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                교수 : <input class="form-control" type="text" name="prof" maxlength="30" required=""
+                    id="{{crs.prof.id_for_label}}">
+            </div>
+            <br>
+            <div class="col-md-6 mb-3">
+                학부 : <input class="form-control" type="text" name="dep" maxlength="50" required=""
+                    id="{{crs.dep.id_for_label}}">
+            </div>
+        </div>
+        <br>
+        강의평 : <textarea class="form-control" name="eval" cols="40" rows="10" required=""
+            id="{{crs.evak.id_for_label}}"></textarea>
+        <br>
+        <button type="submit" class="btn btn-info">저장하기</button>
+    </form>
+
 </div>
-
-
 
 {% endblock %}
