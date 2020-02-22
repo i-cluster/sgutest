@@ -49,8 +49,10 @@ def delete(request, crs_id):
 def c_create(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
     cform = CommentForm(request.POST)
+    score = request.POST['score']
     if cform.is_valid():
         cmt = cform.save(commit=False)
+        cmt.score = score
         cmt.crs = crs
         if not cform.data['author']:
             crs.author = request.user

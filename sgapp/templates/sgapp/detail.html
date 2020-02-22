@@ -11,12 +11,22 @@
 
 <form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
     {% csrf_token %}
+    평가 :
+    <select name="score">
+        <option value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
     내용 : {{cform.content}}
     작성자 : {{cform.author}}
     <input type="submit" value="한줄평 작성">
 </form><br>
 
 {% for cmt in cmt %}
+    {{cmt.score}}점/5점
     {{cmt.content}}
     {{cmt.author}}
     {{cmt.date}}<br>
