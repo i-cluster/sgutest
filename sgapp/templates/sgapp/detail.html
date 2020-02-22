@@ -1,37 +1,58 @@
-강의명 : {{crs.name}}
-담당교수 : {{crs.prof}}
-학부 : {{crs.dep}}
-한줄평 : {{crs.eval}}<br>
-<a href="{% url 'edit' crs.id %}">수정</a><br>
-<a href="{% url 'delete' crs.id %}">삭제하기</a><br><br>
+{% extends 'sgapp/base.html' %}
 
-<a href="{% url 'c_like' crs.id %}">좋아요</a><br><br>
-{{like.count}}명이 좋아합니다.
-'좋아요'한 사람 : {% for l in like %} {{l.author}} {% endfor %}
+{% block content %}
 
-<form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
-    {% csrf_token %}
-    평가 :
-    <select name="score">
-        <option value="0">0</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-    </select>
-    내용 : {{cform.content}}
-    작성자 : {{cform.author}}
-    <input type="submit" value="한줄평 작성">
-</form><br>
+<div class="container">
+    <h3>{{crs.name}}</h3>
+    교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
+    평가 : {{crs.eval}}<br>
+    작성자 : {{crs.author}} <br><br>
 
+    {% if crs.author == user.username %}
+        <a href="{% url 'edit' crs.id %}">수정하기</a> 
+        <a href="{% url 'delete' crs.id %}">삭제하기</a>
+    {% endif %}<br><br>
+
+    {% if user.is_authenticated %}
+        {% if not lk %}
+            <a href="{% url 'like' crs.id %}">좋아요</a>
+        {% else %}
+            <a href="{% url 'unlike' crs.id %}">좋아요 취소</a>
+        {% endif %}<br>
+    {% endif %}
+
+{{alk.count}}명이 좋아합니다.
+'좋아요'한 사람 : {% for l in alk %} {{l.author}} {% endfor %}
+<br><br>
+
+<a href="{% url 'home' %}">뒤로가기</a><br><br>
+
+<h3>와글와글</h3>
+{% if user.is_authenticated %}
+    <form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
+        {% csrf_token %}
+        떠들기 :
+        <select name="score">
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        내용 : {{cform.content}}
+        <input type="submit" value="댓글">
+    </form><br>
+{% endif %}
+<br>
 {% for cmt in cmt %}
-    {{cmt.score}}점/5점
-    {{cmt.content}}
-    {{cmt.author}}
-    {{cmt.date}}<br>
+    <h5>평가 : {{cmt.score}}점/5점</h5>
+    소곤소곤 : {{cmt.content}}<br>
+    떠든 사람 : {{cmt.author}}, {{cmt.date}}<br><br>
 {% empty %}
     No comment yet.<br>
 {% endfor %}
 
-<a href="{% url 'home' %}">back</a>
+</div>
+
+{% endblock %}

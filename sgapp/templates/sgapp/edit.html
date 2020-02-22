@@ -1,3 +1,7 @@
+{% extends 'sgapp/base.html' %}
+
+{% block content %}
+
 <form method="POST" class="course-form">
     {% csrf_token %}
     강의명 : {{crs.name}}
@@ -6,3 +10,5 @@
     강의평 : {{crs.eval}}
     <button type="submit">Save</button>
 </form>
+
+{% endblock %}

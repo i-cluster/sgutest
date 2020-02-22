@@ -1,8 +1,23 @@
-<form method="POST" class="course-form">
-    {% csrf_token %}
-    강의명 : {{crs.name}}
-    교수 : {{crs.prof}}
-    학부 : {{crs.dep}}
-    강의평 : {{crs.eval}}
-    <button type="submit">Save</button>
-</form>
+{% extends 'sgapp/base.html' %}
+
+{% block content %}
+
+<div class="container-1">
+    <form method="POST" class="course-form">
+        {% csrf_token %}
+        강의명 : {{crs.name}}
+        <br>
+        교수 : {{crs.prof}}
+        <br>
+        학부 : {{crs.dep}}
+        <br>
+        강의평 : {{crs.eval}}
+        <br>
+        <button type="submit">Save</button>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

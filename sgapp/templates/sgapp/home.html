@@ -1,16 +1,24 @@
-<a href="{% url 'new' %}">new</a><br>
+{% extends 'sgapp/base.html' %}
 
-<form action="{% url 'search' %}" method='GET'>
-	Search : <input type='search' name='search'><br>
-    <input type="radio" id="name" name="cate" value="name">
-    <label for="name">Course</label><br>
-    <input type="radio" id="prof" name="cate" value="prof">
-    <label for="prof">Professor</label><br>
-    <input type="radio" id="dep" name="cate" value="dep">
-    <label for="dep">Department</label>
-	<input type='submit' value='search'>
-</form>
+{% block content %}
 
-{% for c in crs %}
-    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
-{% endfor %}
+<div class="container">
+
+
+    {% for c in crs %}
+    <div class="arrow_box">
+        <h3>{{c.name}}</h3>
+        교수 : {{c.prof}} | 학부 : {{c.dep}}<br>
+        평가 : {{c.summary}}...<br>
+        <a href="{% url 'detail' c.id %}" >자세히 보기</a> <br>
+    </div>
+    {% endfor %}
+</div>
+
+
+
+
+
+
+
+{% endblock %}

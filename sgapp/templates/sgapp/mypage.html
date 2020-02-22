@@ -1,0 +1,23 @@
+{% extends 'sgapp/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    {{user.username}}님의 페이지입니다.
+<br>
+
+id : {{user.username}}
+<br>
+<form method="POST" class="profile" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+{% if pf.photo %}
+    <img src="{{ pf.photo.url }}" height=200>
+{% endif %}
+
+</div>
+
+
+{% endblock %}

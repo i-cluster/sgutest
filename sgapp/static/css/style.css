@@ -1,0 +1,115 @@
+
+/*LOGO FONT*/
+@font-face { 
+    font-family: 'Recipekorea'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+@font-face { 
+    font-family: 'MapoPeacefull'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/MapoPeacefullA.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+button.navbar-toggler:focus{
+    outline-color: #17A2B8;
+}
+
+a.nav-title{
+    color: #17A2B8;
+    font-family: 'Recipekorea'; 
+    padding-right: 2rem;
+
+}
+
+body{
+    font-family: 'MapoPeacefull'; 
+}
+
+.navnav{
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: .5rem 1rem;
+}
+
+
+.nav-nav {
+    display: flex;
+    padding-left: 4rem;
+    margin-bottom: 0;
+    list-style: none;
+    color: white;
+}
+
+.nav-link {
+    color: rgb(207, 207, 207);
+}
+
+.nav-in {
+    float: right;
+}
+
+#cate{
+    display: block;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color:white;
+    background-color:#17A2B8;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.container{
+    width: 60%;
+    margin: 10px auto;
+}
+
+.container-1{
+    width: 80%;
+    margin: 10px auto;
+}
+
+/* 말풍선 모양 */
+.arrow_box {
+	position: relative;
+	background: white;
+    border: 4px solid #17A2B8;
+    border-radius: .25rem;
+    margin: 50px 0;
+}
+.arrow_box:after, .arrow_box:before {
+	top: 99%;
+	left: 70%;
+    border: solid transparent;
+    
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-top-color: white;
+	border-width: 30px;
+	margin-left: -30px;
+}
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-top-color: #17A2B8;
+	border-width: 36px;
+	margin-left: -36px;
+}

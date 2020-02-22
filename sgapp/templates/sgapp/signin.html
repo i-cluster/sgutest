@@ -1,0 +1,40 @@
+{% extends 'sgapp/base.html' %}
+
+
+{% block content %}
+
+<!-- ----------------------------- -->
+
+
+  <div class="login_bg text-center">
+    <form class="form-signin" method="POST" action="">
+    {% csrf_token %}
+        <a class="megatitle_fset font-weight-normal ft_indigo" href="/">So근So근</a>
+        {% if error %}
+        <p>{{ error }}</p>
+        {% endif %}
+        <label for="{{ f.username.id_for_label }}" class="sr-only">User Name</label>
+        <input name="{{ f.username.html_name }}" type="username" id="{{ f.username.id_for_label }}" class="fset form-control" placeholder="Username" required="" autofocus="">
+        <label for="{{ f.password.id_for_label }}" class="sr-only">Password</label>
+        <input name="{{ f.password.html_name }}" type="password" id="{{ f.password.id_for_label }}" class="fset form-control" placeholder="Password" required="">
+        <input class="title_fset btn btn-lg btn-indigo btn-block" type="submit" value="로그인">
+        <br>
+    </form>
+    <a class="signup_fset mb-3" href="{% url 'signup'%}">아직 회원이 아니신가요?</a>
+    <p class="sub_fset mt-3 mb-3 text-muted">© 2020 서강대 멋사</p>
+</div>
+
+
+
+{% endblock %}
+
+
+<!--    
+<form action="" method="POST">
+    {% csrf_token %}
+    <table>
+    {{ f.as_table }}
+    </table>
+    <input type="submit" value="로그인">
+    </form>
+    <a href="{% url 'signup' %}">회원가입</a> -->

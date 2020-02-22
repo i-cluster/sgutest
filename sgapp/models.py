@@ -10,6 +10,13 @@ class Course(models.Model):
     prof = models.CharField(max_length=30)
     dep = models.CharField(max_length=50)
     eval = models.TextField(default="")
+    author = models.CharField(max_length=30, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+    
+    def summary(self):
+        return self.eval[:50]
 
 class Comment(models.Model):
     objects = models.Manager()
@@ -20,9 +27,11 @@ class Comment(models.Model):
     author = models.CharField(max_length=30, null=True, blank=True)
 
 class Like(models.Model):
+    objects = models.Manager()
     like = models.BooleanField(default=False)
 
 class Like_course(models.Model):
+    objects = models.Manager()
     like = models.ForeignKey('sgapp.Like', on_delete=models.CASCADE)
     course = models.ForeignKey('sgapp.Course', on_delete=models.CASCADE)
     author = models.CharField(max_length=30, null=True, blank=True)

@@ -1,5 +1,58 @@
-{% for c in crs %}
-    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
-{% endfor %}
+{% extends 'sgapp/base.html' %}
 
-<a href="{% url 'home' %}">back</a><br>
+{% block content %}
+
+    <div class="container">
+    <!-- Navbar에 검색창 있어서 주석처리했습니다~ 
+        <form class="form-inline justify-content-md-center w-sm-50">
+            <input type="text" class="form-control w-50" value="" placeholder="" >
+            <div class="input-group-append">
+              <button class="btn btn-outline-info" type="button" id="button-addon2">검색</button>
+            </div>
+        </form>
+    -->
+        <div class="row row-cols-1 row-cols-sm-2 search-list">
+            <div class="col py-2">
+                <a href="#" class="btn btn-light btn-block h-100 active">
+                    <h4>경영영어라이팅</h4>
+                    김이권
+                    <span class="badge badge-primary badge-pill">3.5</span>
+                </a>
+            </div>
+            <div class="col py-2">
+                <a href="#" class="btn btn-light btn-block h-100 active">
+                    <h4>경제학도를위한영어쓰기와말하기</h4>
+                    Kim, Young-il
+                    <span class="badge badge-primary badge-pill">4.5</span>
+                </a>
+            </div>
+            <div class="col py-2">
+                <a href="#" class="btn btn-light btn-block h-100 active">
+                    <h4>경제학도를위한영어쓰기와말하기</h4>
+                    우경옥
+                    <span class="badge badge-primary badge-pill">4.5</span>
+                </a>
+            </div>
+
+            <div class="col py-2">
+                <a href="#" class="btn btn-light btn-block h-100 active">
+                    <h4>경제학도를위한영어쓰기와말하기</h4>
+                    이강오
+                    <span class="badge badge-primary badge-pill">4.5</span>
+                </a>
+            </div>
+           
+        </div>
+    </div>
+
+
+    
+    {% for c in crs %}
+    강의명 : {{c.name}} 교수 : {{c.prof}} <a href="{% url 'detail' c.id %}">한줄평 보기</a> <br>
+    {% endfor %}
+
+{% endblock %}
+
+
+
+
