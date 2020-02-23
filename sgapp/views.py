@@ -126,7 +126,7 @@ from django.contrib.auth import logout #logout을 처리하기 위해 선언
 
 def signout(request): #logout 기능
     logout(request) #logout을 수행한다.
-    return HttpResponseRedirect(reverse('home'))
+    return HttpResponseRedirect(reverse('signin'))
 
 def mypage(request):
     pf = Profile.objects.all()

@@ -2,13 +2,42 @@
 
 {% block content %}
 
-<form method="POST" class="course-form">
+<!-- <form method="POST" class="course-form">
     {% csrf_token %}
     강의명 : {{crs.name}}
     교수 : {{crs.prof}}
     학부 : {{crs.dep}}
     강의평 : {{crs.eval}}
     <button type="submit">Save</button>
-</form>
+</form> -->
+
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>강의평가 변경</h2>
+    </div>
+    <form method="POST" class="course-form">
+        {% csrf_token %}
+        강의명 : 
+        <input class="form-control" type="text" name="name" maxlength="50" required="" id="{{crs.name.id_for_label}}" value="{{crs.name.value}}">
+        <br>
+        <div class="row">
+            <div class="col-md-6 mb-3">
+                교수 : <input class="form-control" type="text" name="prof" maxlength="30" required=""
+                    id="{{crs.prof.id_for_label}}" value="{{crs.prof.value}}">
+            </div>
+            <br>
+            <div class="col-md-6 mb-3">
+                학부 : <input class="form-control" type="text" name="dep" maxlength="50" required=""
+                    id="{{crs.dep.id_for_label}}" value="{{crs.dep.value}}">
+            </div>
+        </div>
+        <br>
+        강의평 : <textarea class="form-control" name="eval" cols="40" rows="10" required=""
+            id="{{crs.evak.id_for_label}}">{{crs.eval.value}}</textarea>
+        <br>
+        <button type="submit" class="btn btn-info">저장하기</button>
+    </form>
+</div>
+
 
 {% endblock %}
