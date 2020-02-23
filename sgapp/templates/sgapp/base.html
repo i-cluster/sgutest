@@ -23,23 +23,20 @@
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
         <a class="nav-title" px-lg-4 href="/home">SO근SO근</a>
 
-        {% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
-
-        <div class="navbar-nav-scroll">
-          <ul class="navbar-nav bd-navbar-nav flex-row">
-            <form class="form-inline" action="{% url 'search' %}" method='GET'>
-                <input class="form-control" type="search" placeholder="과목/교수/학부" name="search">
-
-                <select id="cate" name="cate">
-                    <option value="name">과목</option>
-                    <option value="prof">교수</option>
-                    <option value="dep">학부</option>
-                </select>
-                <button class="btn btn-outline-info " type="submit">검색하기</button>
-            </form>
-              
-          </ul>
-        </div>
+      {% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
+          <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+              <form class="form-inline" action="{% url 'search' %}" method='GET'>
+                  <input class="form-control" type="search" placeholder="과목/교수/학부" name="search">
+                  <select id="cate" name="cate">
+                      <option value="name">과목</option>
+                      <option value="prof">교수</option>
+                      <option value="dep">학부</option>
+                  </select>
+                  <button class="btn btn-outline-info " type="submit">검색하기</button>
+              </form>
+            </ul>
+          </div>
       
         <ul class="navbar-nav ml-md-auto">
             <ul class="navbar-nav bd-navbar-nav flex-row align-items: center">
@@ -62,7 +59,7 @@
                   </li>
                 </ul>
               </ul>
-                {% else %} 
+      {% else %} 
                 <ul class="nav justify-content-md-end">
                   <li class="nav-item">
                     <a class="nav-link" href="/signin">로그인</a>
@@ -71,7 +68,7 @@
                     <a class="nav-link" href="/signup">회원가입</a>
                   </li>
                 </ul>
-                {% endif %}
+      {% endif %}
               
     </header>
 

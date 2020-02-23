@@ -11,6 +11,7 @@ class Course(models.Model):
     dep = models.CharField(max_length=50)
     eval = models.TextField(default="")
     author = models.CharField(max_length=30, null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return self.name
