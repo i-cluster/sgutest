@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Course, Comment, Like_course, Like, Profile, Follow, Tag, Follow_post
+from .models import Course, Comment, Like_course, Like, Profile, Tag
 from .forms import CourseForm, CommentForm, SignupForm, SigninForm, ProfileForm, TagForm
 from django.contrib.auth.models import User
 from django.contrib import auth
@@ -32,27 +32,14 @@ def new(request):
         tag = TagForm()
         return render(request, 'sgapp/new.html',{'crs':form, 'tag':tag})
 
-def postfollow(request, crs_id):
-    crs = get_object_or_404(Course, pk=crs_id)
-    follow = Follow(follow = True)
-    follow.save()
-    fw = Follow_post(
-        follow = follow,
-        course = crs,
-        author = request.user
-        )
-    fw.save()
-    return redirect('detail', crs_id=crs.id)
-
 def detail(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
     form = CommentForm()
-    fl = Follow_post.objects.filter(course=crs, author=request.user)
-    follow = Follow_post.objects.filter(course=crs)
     cmt = Comment.objects.filter(crs=crs).order_by('-date')
     lk = Like_course.objects.filter(course=crs, author=request.user)
     alk = Like_course.objects.filter(course=crs)
-    return render(request, 'sgapp/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'lk':lk, 'alk':alk, 'follow':follow, 'fl':fl})
+    t = TagForm()
+    return render(request, 'sgapp/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'lk':lk, 'alk':alk, 't':t})
 
 def edit(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)

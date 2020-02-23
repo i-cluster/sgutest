@@ -21,19 +21,14 @@
         {% endif %}<br>
     {% endif %}
 
-{{alk.count}}명이 좋아합니다.
+{{alk.count}}명이 좋아합니다.<br>
 '좋아요'한 사람 : {% for l in alk %} {{l.author}} {% endfor %}
 <br><br>
-<p>
-    <a href="{% url 'follow' id=crs.pk %}">팔로우하기</a>
-    <b>{{ follow.count }}</b>명이 팔로우합니다.</b>
-    <p>팔로우 중인 사람 : {% for f in follow %} {{ f.author }} {% endfor %}</p>
-</p>
-<p>
-    {% for t in crs.tag_set.all %}
-        #{{t.name}}
-    {% endfor %}
-</p>
+
+{% for t in crs.tag_set.all %}
+    #{{t.name}}
+{% endfor %}
+
 
 <a href="{% url 'home' %}">뒤로가기</a><br><br>
 

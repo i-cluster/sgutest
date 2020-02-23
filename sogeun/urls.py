@@ -37,6 +37,5 @@ urlpatterns = [
     path('search/', views.search, name="search"),
     path('like/<int:crs_id>', views.like, name="like"),
     path('unlike/<int:crs_id>', views.unlike, name="unlike"),
-    path('follow/<int:crs_id>', views.postfollow, name="follow"),
 ]
 urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
