@@ -12,6 +12,7 @@ class Course(models.Model):
     eval = models.TextField(default="")
     author = models.CharField(max_length=30, null=True, blank=True)
     date = models.DateTimeField(default=timezone.now)
+    tag_set = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         return self.name
@@ -41,3 +42,17 @@ class Profile(models.Model):
     objects = models.Manager()
     title = models.CharField(max_length=100)
     photo = models.ImageField(blank=True, upload_to='images/')
+
+class Follow(models.Model):
+    objects = models.Manager()
+    follow = models.BooleanField(default=False)
+
+class Follow_post(models.Model):
+    objects = models.Manager()
+    follow = models.ForeignKey('sgapp.Follow', on_delete=models.CASCADE)
+    course = models.ForeignKey('sgapp.Course', on_delete=models.CASCADE)
+    author = models.CharField(max_length=30, null=True, blank=True)
+
+class Tag(models.Model):
+    objects = models.Manager()
+    name = models.CharField(max_length=20)
