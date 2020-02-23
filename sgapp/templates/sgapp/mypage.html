@@ -11,6 +11,7 @@
             <div class="row">
                 <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px; height: 140px; background-color: rgb(233, 236, 239);">
+                        <div id="preview"></div>
                         {% if pf.photo %}
                         <img src="{{ pf.photo.url }}" height=200>
                         {% endif %}
@@ -27,9 +28,9 @@
                                 <i class="fa fa-fw fa-camera"></i>
                                 <span>사진 변경</span>
                             </label>
-                            <input type="file" name="{{form.photo.html_name}}" accept="image/*"
+                            <input type="file" name="{{form.photo.html_name}}" class="inp-img" accept="image/*"
                                 id="{{form.photo.id_for_label}}" style="display: none;">
-
+                                <span class="btn-delete">삭제</span>    
                         </div>
                     </div>
                 </div>
@@ -57,28 +58,10 @@
 
     <div class="card card-body col-12 col-sm-6 col-lg-5">
         <div class="p-3">
-            <h4>내가 올린 글 및 댓글</h4>
-            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
-            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
-            <h6><a href="" class="text-info">글로벌의사소통2: 홍길동</a></h6>
-          
-    {% for c in crs %}
-    <div class="arrow_box">
-        <div class="section">
-              <a class="article" href="{% url 'detail' c.id %}">
-                <h3>{{c.name}}</h3>
-                <p class="rate">
-                    <span class="star">
-                        <span class="on" style="width: 20%;"></span>
-                    </span>
-                </p>
-                교수 : {{c.prof}} | 학부 : {{c.dep}}<br>
-                평가 : {{c.summary}}...<br>
-            </a>
-        </div>
-    </div>
-    {% endfor %}
-
+            <h4>내가 올린 글</h4>
+            {% for c in crs %}
+            <h6><a class="text-info" href="{% url 'detail' c.id %}">{{c.name}}: {{c.prof}}</a></h6>
+            {% endfor %}
         </div>
     </div>
 
