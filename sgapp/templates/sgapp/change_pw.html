@@ -1,0 +1,74 @@
+{% extends 'sgapp/base.html' %}
+
+{% block content %}
+
+
+<div class="container my_container row justify-content-center flex-lg-nowrap">
+
+    <div class="card card-body col-12 col-sm-6 col-lg-5">
+
+            <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                    <div class="mx-auto" style="width: 140px; height: 140px; background-color: rgb(233, 236, 239);">
+                        {% if pf.photo %}
+                        <img src="{{ pf.photo.url }}" height=200>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.username}}</h4>
+                        <p class="mb-0">{{user.first_name}}</p>
+                        <div class="text-muted"><small>........................</small></div>
+                       
+                    </div>
+                </div>
+            </div>
+
+            <!-- nav바 -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a href="/mypage" class="btn-light active nav-link">개인정보</a></li>
+                <li class="nav-item"><a href="/change_pw" class="active nav-link">비밀번호 변경</a></li>
+            </ul>
+
+            <br>
+            
+                <form class="login_form form-signup fset" method="POST" action="{% url 'change_pw' %}">
+                    {% csrf_token %}
+                    {% if error %}
+                    <h3 style="color:red">{{error}}</h3>
+                    {% endif %}
+                <div class="form-group">
+                    기존 비밀번호: <br>
+                    <input class="login_input form-control" name="current_pw" type="password">
+                </div>        
+                <div class="form-group">
+                    새 비밀번호: <br>
+                    <input class="login_input form-control" name="new_pw" type="password">
+                </div>
+        
+                <div class="form-group">
+                    새 비밀번호 확인: <br>
+                    <input class="login_input form-control" name="new_pw_check" type="password">
+                </div>
+                <br>
+                <input class="title_fset btn btn-lg btn-info btn-block" type="submit" value="제출하기">
+                </form>
+        
+    </div>
+
+    <div class="card card-body col-12 col-sm-6 col-lg-5">
+        <div class="p-3">
+            <h4>내가 올린 글 및 댓글</h4>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">글로벌의사소통2: 홍길동</a></h6>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}
+
+

@@ -29,6 +29,7 @@ urlpatterns = [
     path('signout/', views.signout, name="signout"),
     path('signin/', views.signin, name="signin"),
     path('mypage/', views.mypage, name="mypage"),
+    path('change_pw/', views.change_pw, name="change_pw"),
     path('<int:crs_id>', views.detail, name="detail"),
     path('edit/<int:crs_id>', views.edit, name="edit"),
     path('delete/<int:crs_id>', views.delete, name="delete"),
