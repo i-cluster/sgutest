@@ -130,7 +130,6 @@ a.nav-title{
     width: 0;
     position: absolute;
     pointer-events: none;
-    
 }
     
 .arrow_box:after {
@@ -148,9 +147,14 @@ a.nav-title{
     
 }
 
+
 /* detail */
 a.like{
     color:#212529;
+}
+
+.crs_menu{
+    text-align: right;
 }
 
 /* 댓글 말풍선 */
@@ -161,7 +165,7 @@ a.like{
     border-radius: .30rem;
     -moz-border-radius: 10px;  
     -webkit-border-radius: 10px;  
-    margin: 10px 0;
+    margin: 20px 50px 0px 0px;
 }
 .s-arrow_box:after, .s-arrow_box:before {
     right: 99.9%;
@@ -188,4 +192,12 @@ a.like{
     border-width: 21px;
     margin-bottom: -21px;
     
+}
+
+.com_container{
+    margin: 20px auto;
+}
+
+.com_write{
+    margin: 20px auto;
 }

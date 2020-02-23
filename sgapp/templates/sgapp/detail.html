@@ -12,65 +12,58 @@
         </div>
     </div>
 
-    <div class="author-menu">
-        <a class="like" href="{% url 'home' %}">뒤로가기</a>
+    <div class="crs_menu">
         {% if crs.author == user.username %}
         <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
         <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
         {% endif %}
+        <a class="like" href="{% url 'home' %}">뒤로가기</a>
     </div>
     
-    {% if user.is_authenticated %}
+    <div class="like">
+        {% if user.is_authenticated %}
         {% if not lk %}
             <a class="like" href="{% url 'like' crs.id %}">좋아요</a>
         {% else %}
             <a class="like" href="{% url 'unlike' crs.id %}">좋아요 취소</a>
         {% endif %}<br>
-    {% endif %}
-
-{{like.count}}명이 좋아합니다.
-'좋아요'한 사람 : {% for l in like %} {{l.author}} {% endfor %}
-<br><br>
-
-
-<h3>와글와글</h3>
-{% if user.is_authenticated %}
-    <form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
-        {% csrf_token %}
-        떠들기 :
-        <select name="score">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        내용 : {{cform.content}}
-        <input type="submit" value="댓글">
-    </form><br>
-{% endif %}
-<br>
-
-{% for cmt in cmt %}
-<div class="s-arrow_box">
-    <h5>평가 : {{cmt.score}}점/5점</h5>
-    소곤소곤 : {{cmt.content}}<br>
-    떠든 사람 : {{cmt.author}}, {{cmt.date}}
-</div>
-{% empty %}
-    No comment yet.<br>
-{% endfor %}
-<br>
-<br>
+        {% endif %}
+        {{lk.count}}명이 좋아합니다.
+        '좋아요'한 사람 : {% for l in lk %} {{l.author}} {% endfor %}
+    </div>
 
 
+    <div class="com_container">
+        <h3>와글와글</h3>
+        {% if user.is_authenticated %}
+            <form class="com_write" action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
+                {% csrf_token %}
+                떠들기 :
+                <select name="score">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <input class="form-control" type="text" name="content" maxlength="150" required="" id="{{cform.content}}">
+                <button type="submit" class="btn btn-info">댓글</button>
+            </form><br>
+        {% endif %}
 
+        {% for cmt in cmt %}
+        <div class="s-arrow_box">
+            <div class="section">
+                <h5>평가 : {{cmt.score}}점/5점</h5>
+                소곤소곤 : {{cmt.content}}<br>
+                떠든 사람 : {{cmt.author}}, {{cmt.date}}
+            </div>
+        </div>
+        {% empty %}
+            No comment yet.<br>
+        {% endfor %}
+    </div>
 
 </div>
-
-
-
-
-
 {% endblock %}
