@@ -13,7 +13,7 @@
         <h1 class="mb-10 font-weight-normal text-center">So근So근</h1>
         <h3>로그인</h3>
         {% if error %}
-        <p>{{ error }}</p>
+        <p class="text-danger">{{ error }}</p>
         {% endif %}
         <label for="{{ f.username.id_for_label }}" class="sr-only">User Name</label>
         <input name="{{ f.username.html_name }}" type="username" id="{{ f.username.id_for_label }}" class="form-control" placeholder="아이디" required="" autofocus="">

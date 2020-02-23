@@ -141,3 +141,22 @@ a.nav-title{
 min-height: 110px;
 padding: 0;
 }
+
+/* mypage.html */
+.my_container{
+  width: auto;
+  margin-top: 40px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    /* border: 1px solid #ccc; */
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.card h4{
+  margin-bottom: 20px;
+}

@@ -8,7 +8,7 @@ from django.http.response import HttpResponseRedirect
 from django.urls.base import reverse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.decorators import login_required
-
+from django.contrib.auth.hashers import check_password # seohyun added
 # Create your views here.
 
 def home(request):
@@ -141,6 +141,25 @@ def mypage(request):
         form = ProfileForm()
         return render(request, 'sgapp/mypage.html', {'form':form})
 
+def change_pw(request): #비밀번호 변경 기능
+    context= {}
+    if request.method == "POST":
+        current_pw = request.POST.get("current_pw")
+        user = request.user
+        if check_password(current_pw,user.password):
+            new_pw = request.POST.get("new_pw")
+            new_pw_check = request.POST.get("new_pw_check")
+            if new_pw == new_pw_check:
+                user.set_password(new_pw)
+                user.save()
+                auth.login(request,user)
+                return redirect('mypage')
+            else:
+                context.update({'error':"새로운 비밀번호를 다시 확인해주세요."})
+        else:
+            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
+
+    return render(request, 'sgapp/change_pw.html', context)
 #def create(request):
     # 생략
   #profile.photo = request.FILES['photo']

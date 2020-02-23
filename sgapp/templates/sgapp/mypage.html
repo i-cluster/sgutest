@@ -2,35 +2,86 @@
 
 {% block content %}
 
-<div class="container">
-    <div class="py-5 text-center">
-        <h2>{{user.username}}님의 페이지입니다.</h2>
-        <p class="lead"></p>
-     </div>
-    <form method="POST" class="profile" enctype="multipart/form-data">
-        {% csrf_token %}
 
-        <!-- {{ form.as_p }} -->
+<div class="container my_container row justify-content-center flex-lg-nowrap">
 
-        <div class="form-group ">
-            <label for="{{form.title.id_for_label}}">Title:</label> 
-            <input type="text" name="{{form.title.html_name}}" class="form-control" maxlength="100" required="" id="{{form.title.id_for_label}}">
+    <div class="card card-body col-12 col-sm-6 col-lg-5">
+
+        <form method="POST" class="profile" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="row">
+                <div class="col-12 col-sm-auto mb-3">
+                    <div class="mx-auto" style="width: 140px; height: 140px; background-color: rgb(233, 236, 239);">
+                        {% if pf.photo %}
+                        <img src="{{ pf.photo.url }}" height=200>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="col d-flex flex-column flex-sm-row justify-content-between mb-3">
+                    <div class="text-center text-sm-left mb-2 mb-sm-0">
+                        <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.username}}</h4>
+                        <p class="mb-0">{{user.first_name}}</p>
+                        <div class="text-muted"><small>........................</small></div>
+                        <div class="mt-2">
+
+                            <label for="{{form.photo.id_for_label}}" class="btn btn-primary custom-file-upload">
+                                <i class="fa fa-fw fa-camera"></i>
+                                <span>사진 변경</span>
+                            </label>
+                            <input type="file" name="{{form.photo.html_name}}" accept="image/*"
+                                id="{{form.photo.id_for_label}}" style="display: none;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- nav바 -->
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a href="/mypage" class="active nav-link">개인정보</a></li>
+                <li class="nav-item"><a href="/change_pw" class="btn-light active nav-link">비밀번호 변경</a></li>
+            </ul>
+
+            <br>
+            <div class="h6">
+                성: {{user.last_name}}
+            </div>
+            <br>
+            <div class="h6">
+                이름: {{user.first_name}}
+            </div>
+            <br>
+            <div class="h6">
+                이메일: {{user.email}}
+            </div>
+    </div>
+
+    <div class="card card-body col-12 col-sm-6 col-lg-5">
+        <div class="p-3">
+            <h4>내가 올린 글 및 댓글</h4>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">글로벌의사소통2: 홍길동</a></h6>
         </div>
-        <div class="form-group">
-            <label for="{{form.photo.id_for_label}}">Photo:</label> 
-            <input type="file" name="{{form.photo.html_name}}" class="form-control" accept="image/*" id="{{form.photo.id_for_label}}">
-        </div>
-
-        <button type="submit" class="btn btn-info">Save</button>
-    </form>
-    {% if pf.photo %}
-        <img src="{{ pf.photo.url }}" height=200>
-    {% endif %}
+    </div>
 
 </div>
 
 
 {% endblock %}
 
-
-
+           <!-- <div class="form-group ">
+                <label for="{{form.title.id_for_label}}">Title:</label> 
+                <input type="text" name="{{form.title.html_name}}" class="form-control" maxlength="100" required="" id="{{form.title.id_for_label}}">
+            </div>
+            <div class="form-group">
+                <label for="{{form.photo.id_for_label}}">Photo:</label> 
+                <input type="file" name="{{form.photo.html_name}}" class="form-control" accept="image/*" id="{{form.photo.id_for_label}}">
+            </div>
+    
+            <button type="submit" class="btn btn-info">저장하기</button>
+        </form>
+        {% if pf.photo %}
+            <img src="{{ pf.photo.url }}" height=200>
+        {% endif %} -->
