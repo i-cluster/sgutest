@@ -3,16 +3,23 @@
 {% block content %}
 
 <div class="container">
-    <h3>{{crs.name}}</h3>
-    교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
-    평가 : {{crs.eval}}<br>
-    작성자 : {{crs.author}} <br><br>
+    <div class="arrow_box">
+        <div class="section">
+            <h3>{{crs.name}}</h3>
+        교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
+        평가 : {{crs.eval}}<br>
+        작성자 : {{crs.author}}
+        </div>
+    </div>
 
-    {% if crs.author == user.username %}
+    <div class="author-menu">
+        <a class="like" href="{% url 'home' %}">뒤로가기</a>
+        {% if crs.author == user.username %}
         <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
         <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
-    {% endif %}<br><br>
-
+        {% endif %}
+    </div>
+    
     {% if user.is_authenticated %}
         {% if not lk %}
             <a class="like" href="{% url 'like' crs.id %}">좋아요</a>
@@ -25,7 +32,6 @@
 '좋아요'한 사람 : {% for l in like %} {{l.author}} {% endfor %}
 <br><br>
 
-<a class="like" href="{% url 'home' %}">뒤로가기</a><br><br>
 
 <h3>와글와글</h3>
 {% if user.is_authenticated %}
@@ -45,10 +51,13 @@
     </form><br>
 {% endif %}
 <br>
+
 {% for cmt in cmt %}
+<div class="s-arrow_box">
     <h5>평가 : {{cmt.score}}점/5점</h5>
     소곤소곤 : {{cmt.content}}<br>
-    떠든 사람 : {{cmt.author}}, {{cmt.date}}<br><br>
+    떠든 사람 : {{cmt.author}}, {{cmt.date}}
+</div>
 {% empty %}
     No comment yet.<br>
 {% endfor %}
