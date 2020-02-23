@@ -130,16 +130,17 @@ def signout(request): #logout 기능
 
 def mypage(request):
     pf = Profile.objects.all()
+    crs = Course.objects.filter(author=request.user).order_by('-date')
     if request.method == "POST":
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             pform = ProfileForm()
-            return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform})
+            return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform, 'crs':crs})
 
     else:
         form = ProfileForm()
-        return render(request, 'sgapp/mypage.html', {'form':form})
+        return render(request, 'sgapp/mypage.html', {'pf':pf, 'form':form, 'crs':crs})
 
 def change_pw(request): #비밀번호 변경 기능
     context= {}
