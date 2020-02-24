@@ -3,65 +3,105 @@
 {% block content %}
 
 <div class="container">
-    <h3>{{crs.name}}</h3>
-    교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
-    평가 : {{crs.eval}}<br>
-    작성자 : {{crs.author}} <br><br>
+    <h3>[ 소근소근 ]</h3>
+    <div class="arrow_box">
+        <div class="section">
+            <h3>{{crs.name}}</h3>
+        교수 : {{crs.prof}} | 학부 : {{crs.dep}}<br>
+        평가 : {{crs.eval}}<br>
+        작성자 : {{crs.author}}
+        </div>
+    </div>
 
-    {% if crs.author == user.username %}
-        <a href="{% url 'edit' crs.id %}">수정하기</a> 
-        <a href="{% url 'delete' crs.id %}">삭제하기</a>
-    {% endif %}<br><br>
+    <div class="crs_menu">
+        <div class="writer_menu">
+            {% if crs.author == user.username %}
+            <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
+            <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
+            {% endif %}
+            <a class="like" href="{% url 'home' %}">뒤로가기</a>
+        </div>
+    </div>
+    
+    <div class="like">
+        <div class="heart">
+            {% if not lk %}
+            <a class="like" href="{% url 'like' crs.id %}">♡</a>
+            {% else %}
+            <a class="like" href="{% url 'unlike' crs.id %}">♥</a>
+            {% endif %}
+            {{lk.count}}명이 좋아합니다. <br>
+        </div>
+        '좋아요'한 사람 {% for l in lk %} {{l.author}} {% endfor %}
+    </div>
+    <br>
+    <p>
+        {% for t in crs.tag_set.all %}
+            #{{t.tname}}
+        {% endfor %}
+    </p>
+    <br>
 
-    {% if user.is_authenticated %}
-        {% if not lk %}
-            <a href="{% url 'like' crs.id %}">좋아요</a>
-        {% else %}
-            <a href="{% url 'unlike' crs.id %}">좋아요 취소</a>
-        {% endif %}<br>
-    {% endif %}
-
-{{alk.count}}명이 좋아합니다.
-'좋아요'한 사람 : {% for l in alk %} {{l.author}} {% endfor %}
-<br><br>
-
-<a href="{% url 'home' %}">뒤로가기</a><br><br>
-
-<h3>와글와글</h3>
-{% if user.is_authenticated %}
-    <form action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
-        {% csrf_token %}
-        떠들기 :
-        <select name="score">
-            <option value="0">0</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        내용 : {{cform.content}}
-        <input type="submit" value="댓글">
-    </form><br>
+    <div class="com_container">
+        <h3>[ 와글와글 ]</h3>
+        {% if user.is_authenticated %}
+            <form class="com_write" action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
+                {% csrf_token %}
+                <div class="com_w1">
+                    <select id="cate" name="score">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="com_w2">
+                    <input class="form-control" type="text" name="content" maxlength="150" required="" id="cform.content">
+                </div>
+                <div class="com_w3">
+                    <button type="submit" class="btn btn-info">떠들기</button>
+                </div>
+            </form>
+       
 {% endif %}
-<br>
-{% for cmt in cmt %}
-    <h5>평가 : {{cmt.score}}점/5점</h5>
-    소곤소곤 : {{cmt.content}}<br>
-    떠든 사람 : {{cmt.author}}, {{cmt.date}}<br><br>
-{% empty %}
-    No comment yet.<br>
-{% endfor %}
-<br>
-<br>
-
-
-
+        {% for cmt in cmt %}
+        <div class="cmt_box">
+            <div class="s-arrow_box">
+                <div class="section">
+                    <div class="star_rate">
+                    {% if cmt.score == 0 %}
+                    ☆☆☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 1 %}
+                    ★☆☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 2 %}
+                    ★★☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 3 %}
+                    ★★★☆☆
+                    {% endif %}
+                    {% if cmt.score == 4 %}
+                    ★★★★☆
+                    {% endif %}
+                    {% if cmt.score == 5 %}
+                    ★★★★★
+                    {% endif %}
+                    </div>
+                    소곤소곤 : {{cmt.content}}<br>
+                    떠든 사람 : {{cmt.author}}, {{cmt.date}}
+                </div>
+            </div>
+        </div>
+        
+        {% empty %}
+        <br>
+            No comment yet.
+        <br>
+        {% endfor %}
+    </div>
 
 </div>
-
-
-
-
-
 {% endblock %}

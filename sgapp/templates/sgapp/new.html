@@ -37,13 +37,15 @@
             </div>
             <br>
             <div class="col-md-6 mb-3">
-                학부 : <input class="form-control" type="text" name="dep" maxlength="50" required=""
-                    id="{{crs.dep.id_for_label}}">
+                학부 : <input class="form-control" type="text" name="dep" maxlength="50" required="" id="{{crs.dep.id_for_label}}">
             </div>
         </div>
         <br>
         강의평 : <textarea class="form-control" name="eval" cols="40" rows="10" required=""
             id="{{crs.evak.id_for_label}}"></textarea>
+        <br>
+        태그 : <input class="form-control" type="text" name="tname" maxlength="50" required=""
+        id="{{crs.tag_set.id_for_label}}">
         <br>
         <button type="submit" class="btn btn-info">저장하기</button>
     </form>

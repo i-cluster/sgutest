@@ -1,5 +1,5 @@
 from django import forms
-from .models import Course, Comment, Profile
+from .models import Course, Comment, Profile, Tag
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
@@ -31,3 +31,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['title', 'photo', ]
+
+class TagForm(forms.ModelForm):
+    class Meta:
+        model = Tag
+        fields = ['tname',]

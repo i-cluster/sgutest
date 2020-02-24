@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
-from .models import Course, Comment, Like_course, Like, Profile
-from .forms import CourseForm, CommentForm, SignupForm, SigninForm, ProfileForm
+from .models import Course, Comment, Like_course, Like, Profile, Tag
+from .forms import CourseForm, CommentForm, SignupForm, SigninForm, ProfileForm, TagForm
 from django.contrib.auth.models import User
 from django.contrib import auth
 from django.http.response import HttpResponseRedirect
@@ -18,14 +18,19 @@ def home(request):
 def new(request):
     if request.method == 'POST':
         form = CourseForm(request.POST, request.FILES)
+        tform = TagForm(request.POST)
         if form.is_valid():
             crs = form.save(commit=False)
             crs.author = request.user
             crs.save()
+        if tform.is_valid():
+            tag = tform.save()
+            crs.tag_set.add(tag)
             return redirect('/'+str(crs.id))
     else:
         form = CourseForm()
-        return render(request, 'sgapp/new.html',{'crs':form})
+        tag = TagForm()
+        return render(request, 'sgapp/new.html',{'crs':form, 'tag':tag})
 
 def detail(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
@@ -33,7 +38,8 @@ def detail(request, crs_id):
     cmt = Comment.objects.filter(crs=crs).order_by('-date')
     lk = Like_course.objects.filter(course=crs, author=request.user)
     alk = Like_course.objects.filter(course=crs)
-    return render(request, 'sgapp/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'lk':lk, 'alk':alk})
+    t = TagForm()
+    return render(request, 'sgapp/detail.html', {'cmt':cmt,'crs':crs, 'cform':form, 'lk':lk, 'alk':alk, 't':t})
 
 def edit(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
@@ -107,6 +113,7 @@ def signup(request):#역시 GET/POST 방식을 사용하여 구현한다.
             else:
                 return render(request, 'sgapp/signup.html',{'f':form, 'error':'비밀번호와 비밀번호 확인이 다릅니다.'})#password와 password_check가 다를 것을 대비하여 error를 지정해준다.
         return render(request, 'sgapp/signup.html',{'f':form})
+        
 def signin(request):#로그인 기능
     if request.method == "GET":
         return render(request, 'sgapp/signin.html', {'f':SigninForm()} )

@@ -36,6 +36,6 @@ urlpatterns = [
     path('c_create/<int:crs_id>', views.c_create, name="c_create"),
     path('search/', views.search, name="search"),
     path('like/<int:crs_id>', views.like, name="like"),
-    path('unlike/<int:crs_id>', views.unlike, name="unlike")
+    path('unlike/<int:crs_id>', views.unlike, name="unlike"),
 ]
-urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
