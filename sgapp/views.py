@@ -74,10 +74,13 @@ def search(request):
     s = request.GET['search']
     c = request.GET['cate']
     sc = {f"{c}__contains":s}
+    lk = Like_course.objects.all()
     if s:
         crs = Course.objects.filter(**sc)
-        return render(request, 'sgapp/search.html', {'crs':crs,'s':s})
-
+        return render(request, 'sgapp/search.html', {'crs':crs,'s':s, 'lk':lk})
+    else:
+        crs = Course.objects.all()
+        return render(request, 'sgapp/search.html', {'crs':crs,'s':'', 'lk':lk})
 def like(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
     like = Like(like=True)
