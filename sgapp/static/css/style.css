@@ -24,6 +24,8 @@
     font-style: normal; 
 }
 
+@font-face { font-family: 'S-CoreDream-8Heavy'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/S-CoreDream-8Heavy.woff') format('woff'); font-weight: normal; font-style: normal; }
+
 body{
     font-family: 'MapoPeacefull'; 
 }
@@ -148,7 +150,7 @@ a.nav-title{
 }
 
 
-/* detail */
+/*---------------- detail ----------------*/
 a.like{
     color:#212529;
 }
@@ -200,4 +202,15 @@ a.like{
 
 .com_write{
     margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-areas: "com_w1 com_w2 com_w3"
+}
+
+.com_w1{
+    float:right;
+}
+
+.star_rate{
+    font-family: 'S-CoreDream-8Heavy'
 }

@@ -38,17 +38,22 @@
         {% if user.is_authenticated %}
             <form class="com_write" action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
                 {% csrf_token %}
-                떠들기 :
-                <select name="score">
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                <input class="form-control" type="text" name="content" maxlength="150" required="" id="cform.content">
-                <button type="submit" class="btn btn-info">댓글</button>
+                <div class="com_w1">
+                    <select id="cate" name="score">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="com_w2">
+                    <input class="form-control" type="text" name="content" maxlength="150" required="" id="cform.content">
+                </div>
+                <div class="com_w3">
+                    <button type="submit" class="btn btn-info">떠들기</button>
+                </div>
             </form><br>
         {% endif %}
 
@@ -56,7 +61,26 @@
         <div class="cmt_box">
             <div class="s-arrow_box">
                 <div class="section">
-                    <h5>평가 : {{cmt.score}}점/5점</h5>
+                    <div class="star_rate">
+                    {% if cmt.score == 0 %}
+                    ☆☆☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 1 %}
+                    ★☆☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 2 %}
+                    ★★☆☆☆
+                    {% endif %}
+                    {% if cmt.score == 3 %}
+                    ★★★☆☆
+                    {% endif %}
+                    {% if cmt.score == 4 %}
+                    ★★★★☆
+                    {% endif %}
+                    {% if cmt.score == 5 %}
+                    ★★★★★
+                    {% endif %}
+                    </div>
                     소곤소곤 : {{cmt.content}}<br>
                     떠든 사람 : {{cmt.author}}, {{cmt.date}}
                 </div>

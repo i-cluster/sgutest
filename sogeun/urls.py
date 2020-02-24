@@ -29,11 +29,13 @@ urlpatterns = [
     path('signout/', views.signout, name="signout"),
     path('signin/', views.signin, name="signin"),
     path('mypage/', views.mypage, name="mypage"),
+    path('change_pw/', views.change_pw, name="change_pw"),
     path('<int:crs_id>', views.detail, name="detail"),
     path('edit/<int:crs_id>', views.edit, name="edit"),
     path('delete/<int:crs_id>', views.delete, name="delete"),
     path('c_create/<int:crs_id>', views.c_create, name="c_create"),
     path('search/', views.search, name="search"),
     path('like/<int:crs_id>', views.like, name="like"),
-    path('unlike/<int:crs_id>', views.unlike, name="unlike")
+    path('unlike/<int:crs_id>', views.unlike, name="unlike"),
 ]
+urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
