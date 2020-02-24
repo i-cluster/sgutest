@@ -1,1 +1,37 @@
-<h1>hello</h1>
+{% extends 'sgapp/base.html' %}
+
+
+{% block content %}
+
+<!-- ----------------------------- -->
+
+
+  <div class="signin_bg text-center">
+    
+    <form class="form-signin" method="POST" action="">
+    {% csrf_token %}
+        <h1 class="mb-10 font-weight-normal text-center">So근So근</h1>
+        {% if user.is_authenticated %}
+        <br>
+        <a class="main" href="/home">SO근SO근 하러가기</a>
+        <br><br>
+        {% else %}
+          <h3>로그인</h3>
+          {% if error %}
+          <p class="text-danger">{{ error }}</p>
+          {% endif %}
+          <label for="{{ f.username.id_for_label }}" class="sr-only">User Name</label>
+          <input name="{{ f.username.html_name }}" type="username" id="{{ f.username.id_for_label }}" class="form-control" placeholder="아이디" required="" autofocus="">
+          <label for="{{ f.password.id_for_label }}" class="sr-only">Password</label>
+          <input name="{{ f.password.html_name }}" type="password" id="{{ f.password.id_for_label }}" class="form-control" placeholder="비밀번호" required="">
+          <input class="btn btn-lg btn-info btn-block input_btn" type="submit" value="로그인">
+          <a class="bt-20 text-info" href="{% url 'signup'%}">아직 회원이 아니신가요?</a>
+        {% endif %}
+        <p class="text-muted">© 2020 서강대 멋사</p>
+    </form>
+</div>
+
+
+
+{% endblock %}
+
