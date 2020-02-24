@@ -13,7 +13,6 @@
     </div>
 
     <div class="crs_menu">
-<<<<<<< HEAD
         <div class="writer_menu">
             {% if crs.author == user.username %}
             <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
@@ -36,32 +35,6 @@
     </div>
 
     <br>
-=======
-        {% if crs.author == user.username %}
-        <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
-        <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
-        {% endif %}
-        <a class="like" href="{% url 'home' %}">뒤로가기</a>
-    </div>
-    
-    <div class="like">
-        {% if user.is_authenticated %}
-        {% if not lk %}
-            <a class="like" href="{% url 'like' crs.id %}">좋아요</a>
-        {% else %}
-            <a class="like" href="{% url 'unlike' crs.id %}">좋아요 취소</a>
-        {% endif %}<br>
-        {% endif %}
-        {{lk.count}}명이 좋아합니다.
-        '좋아요'한 사람 : {% for l in lk %} {{l.author}} {% endfor %}
-    </div>
-    <br>
-    <p>
-        {% for t in crs.tag_set.all %}
-            #{{t.name}}
-        {% endfor %}
-    </p>
->>>>>>> 2b1acd8a795ad537ec5ad27549f77beb236f9f3a
 
     <div class="com_container">
         <h3>와글와글</h3>
@@ -84,15 +57,9 @@
                 <div class="com_w3">
                     <button type="submit" class="btn btn-info">떠들기</button>
                 </div>
-<<<<<<< HEAD
             </form>
        
 {% endif %}
-=======
-            </form><br>
-        {% endif %}
-
->>>>>>> 2b1acd8a795ad537ec5ad27549f77beb236f9f3a
         {% for cmt in cmt %}
         <div class="cmt_box">
             <div class="s-arrow_box">
