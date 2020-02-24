@@ -33,7 +33,11 @@
         </div>
         '좋아요'한 사람 {% for l in lk %} {{l.author}} {% endfor %}
     </div>
-
+    <p>
+        {% for t in crs.tag_set.all %}
+            #{{t.name}}
+        {% endfor %}
+    </p>
     <br>
 
     <div class="com_container">
