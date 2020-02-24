@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container">
+    <h3>[ 소근소근 ]</h3>
     <div class="arrow_box">
         <div class="section">
             <h3>{{crs.name}}</h3>
@@ -41,7 +42,7 @@
     <br>
 
     <div class="com_container">
-        <h3>와글와글</h3>
+        <h3>[ 와글와글 ]</h3>
         {% if user.is_authenticated %}
             <form class="com_write" action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
                 {% csrf_token %}
