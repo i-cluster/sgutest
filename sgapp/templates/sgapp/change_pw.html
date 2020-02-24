@@ -11,7 +11,7 @@
                 <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px; height: 140px; background-color: rgb(233, 236, 239);">
                         {% if pf.photo %}
-                        <img src="{{ pf.photo.url }}" height=200>
+                        <img src="{{ pf.photo.url }}" height="140px">
                         {% endif %}
                     </div>
                 </div>
@@ -19,8 +19,13 @@
                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.username}}</h4>
                         <p class="mb-0">{{user.first_name}}</p>
-                        <div class="text-muted"><small>........................</small></div>
-                       
+                        <div class="text-muted"><small>
+                            {% if pf.title %}
+                            {{pf.title}}
+                            {% else %}
+                            ....................
+                            {% endif %}
+                        </small></div>
                     </div>
                 </div>
             </div>

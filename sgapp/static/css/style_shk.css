@@ -147,6 +147,8 @@ padding: 0;
   width: auto;
   margin-top: 40px;
 }
+
+/* 이미지 업로드 버튼 */
 input[type="file"] {
     display: none;
 }

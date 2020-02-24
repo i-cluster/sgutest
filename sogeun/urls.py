@@ -38,3 +38,4 @@ urlpatterns = [
     path('like/<int:crs_id>', views.like, name="like"),
     path('unlike/<int:crs_id>', views.unlike, name="unlike")
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
