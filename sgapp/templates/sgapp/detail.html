@@ -47,21 +47,26 @@
                     <option value="4">4</option>
                     <option value="5">5</option>
                 </select>
-                <input class="form-control" type="text" name="content" maxlength="150" required="" id="{{cform.content}}">
+                <input class="form-control" type="text" name="content" maxlength="150" required="" id="cform.content">
                 <button type="submit" class="btn btn-info">댓글</button>
             </form><br>
         {% endif %}
 
         {% for cmt in cmt %}
-        <div class="s-arrow_box">
-            <div class="section">
-                <h5>평가 : {{cmt.score}}점/5점</h5>
-                소곤소곤 : {{cmt.content}}<br>
-                떠든 사람 : {{cmt.author}}, {{cmt.date}}
+        <div class="cmt_box">
+            <div class="s-arrow_box">
+                <div class="section">
+                    <h5>평가 : {{cmt.score}}점/5점</h5>
+                    소곤소곤 : {{cmt.content}}<br>
+                    떠든 사람 : {{cmt.author}}, {{cmt.date}}
+                </div>
             </div>
         </div>
+        
         {% empty %}
-            No comment yet.<br>
+        <br>
+            No comment yet.
+        <br>
         {% endfor %}
     </div>
 
