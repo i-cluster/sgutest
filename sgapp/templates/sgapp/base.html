@@ -11,7 +11,7 @@
     
     <!-- Local CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+    <link rel="stylesheet" href="{% static 'css/style_shk.css' %}">
     <!-- Icon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -22,27 +22,26 @@
     <!-- Navbar -->
     <header class="navbar navbar-expand navbar-dark flex-column flex-md-row bd-navbar bg-dark">
         <a class="nav-title" px-lg-4 href="/home">SO근SO근</a>
-            
-        <div class="navbar-nav-scroll">
-          <ul class="navbar-nav bd-navbar-nav flex-row">
-            <form class="form-inline" action="{% url 'search' %}" method='GET'>
-                <input class="form-control" type="search" placeholder="과목/교수/학부" name="search">
 
-                <select id="cate" name="cate">
-                    <option value="name">과목</option>
-                    <option value="prof">교수</option>
-                    <option value="dep">학부</option>
-                </select>
-                <button class="btn btn-outline-info " type="submit">검색하기</button>
-            </form>
-              
-          </ul>
-        </div>
+      {% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
+          <div class="navbar-nav-scroll">
+            <ul class="navbar-nav bd-navbar-nav flex-row">
+              <form class="form-inline" action="{% url 'search' %}" method='GET'>
+                  <input class="form-control" type="search" placeholder="과목/교수/학부" name="search">
+                  <select id="cate" name="cate">
+                      <option value="name">과목</option>
+                      <option value="prof">교수</option>
+                      <option value="dep">학부</option>
+                  </select>
+                  <button class="btn btn-outline-info " type="submit">검색하기</button>
+              </form>
+            </ul>
+          </div>
       
         <ul class="navbar-nav ml-md-auto">
             <ul class="navbar-nav bd-navbar-nav flex-row align-items: center">
                 
-                {% if user.is_authenticated %}<!-- 만약 로그인이 되어있는 상태이면 -->
+                <!-- if자리 이동! -->
 
                   <li class="nav-item active">
                     <a class="nav-link" href="#">{{user.username}}님 환영합니다.</a>
@@ -58,17 +57,19 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="/new">NEW <span class="sr-only">(current)</span></a>
                   </li>
-                  
-                {% else %} 
+                </ul>
+              </ul>
+      {% else %} 
+                <ul class="nav justify-content-md-end">
                   <li class="nav-item">
                     <a class="nav-link" href="/signin">로그인</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/signup">회원가입</a>
                   </li>
-                {% endif %}
-              </ul>
-        </ul>
+                </ul>
+      {% endif %}
+              
     </header>
 
 

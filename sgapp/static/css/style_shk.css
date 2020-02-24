@@ -1,0 +1,162 @@
+/* Style for signin.html, signup.html, search.html */
+
+@font-face { 
+    font-family: 'Recipekorea'; 
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/Recipekorea.woff') format('woff'); 
+    font-weight: normal; 
+    font-style: normal; 
+}
+
+/* base_signin.html */
+button.navbar-toggler:focus{
+  outline-color: #17A2B8;
+}
+
+a.nav-title{
+  color: #17A2B8;
+  font-family: 'Recipekorea'; 
+  padding-right: 2rem;
+}
+
+.navnav{
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: .5rem 1rem;
+}
+
+.nav-nav {
+  display: flex;
+  padding-left: 4rem;
+  margin-bottom: 0;
+  list-style: none;
+  color: white;
+}
+
+.nav-link {
+  color: rgb(207, 207, 207);
+}
+
+.nav-in {
+  float: right;
+}
+
+
+ /* signin과 signup 페이지 */
+.signin_bg{
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .signup_bg{
+ 
+    padding-top: 50px;
+    padding-bottom: 100px;
+  }
+  .signin_bg h1, .signup_bg h1 {
+    color: #17A2B8;
+    font-family: 'Recipekorea'; 
+    
+}
+
+.form-signin, .form-signup {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.form-signin h3, .form-signup h3 {
+         
+    margin-bottom: 30px;
+}
+.input_btn {
+         
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+ 
+
+.form-signin .form-control {
+      
+  height: auto;
+  padding: 10px;
+  font-size: 16px;
+  margin:1px 0;
+}
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+
+
+/* search.html */
+.search-title{
+  text-align: center;
+  margin:60px 0;
+}
+.search_form #cate{
+  
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color:white;
+  background-color:#17A2B8;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.search_form select{
+  height: 36px;
+  width: 85.6px;
+  padding: 8px 16px;
+}
+
+.result_container{
+  width: 100%;
+  margin: 50px auto;
+}
+.result_container .row a{
+    box-shadow: 0 0 2px rgba(0,0,0,0.2);
+    border-radius: 2px;
+    padding: 25px 15px;
+    min-width: 250px;
+    min-height: 110px;
+    color: black;
+}
+.result_container .row a:hover{
+    box-shadow: 3px 3px 3px 2px;
+    transition-duration: 0.2s;
+}
+.result_container .col{
+  min-width: 250px;
+min-height: 110px;
+padding: 0;
+}
+
+/* mypage.html */
+.my_container{
+  width: auto;
+  margin-top: 40px;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    /* border: 1px solid #ccc; */
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.card h4{
+  margin-bottom: 20px;
+}

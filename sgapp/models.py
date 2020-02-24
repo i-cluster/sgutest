@@ -11,6 +11,8 @@ class Course(models.Model):
     dep = models.CharField(max_length=50)
     eval = models.TextField(default="")
     author = models.CharField(max_length=30, null=True, blank=True)
+    date = models.DateTimeField(default=timezone.now)
+    tag_set = models.ManyToManyField('Tag', blank=True)
 
     def __str__(self):
         return self.name
@@ -40,3 +42,7 @@ class Profile(models.Model):
     objects = models.Manager()
     title = models.CharField(max_length=100)
     photo = models.ImageField(blank=True, upload_to='images/')
+
+class Tag(models.Model):
+    objects = models.Manager()
+    name = models.CharField(max_length=20)
