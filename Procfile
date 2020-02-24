@@ -1,1 +1,0 @@
-web:gunicorn sogeun.wsgi --log-file -

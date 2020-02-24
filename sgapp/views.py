@@ -74,13 +74,10 @@ def search(request):
     s = request.GET['search']
     c = request.GET['cate']
     sc = {f"{c}__contains":s}
-    lk = Like_course.objects.all()
     if s:
         crs = Course.objects.filter(**sc)
-        return render(request, 'sgapp/search.html', {'crs':crs,'s':s, 'lk':lk})
-    else:
-        crs = Course.objects.all()
-        return render(request, 'sgapp/search.html', {'crs':crs,'s':'', 'lk':lk})
+        return render(request, 'sgapp/search.html', {'crs':crs,'s':s})
+
 def like(request, crs_id):
     crs = get_object_or_404(Course, pk=crs_id)
     like = Like(like=True)
@@ -149,12 +146,11 @@ def mypage(request):
             return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform, 'crs':crs})
 
     else:
-        pform = ProfileForm()
-        return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform, 'crs':crs})
+        form = ProfileForm()
+        return render(request, 'sgapp/mypage.html', {'pf':pf, 'form':form, 'crs':crs})
 
 def change_pw(request): #비밀번호 변경 기능
-    pf = Profile.objects.all()
-    crs = Course.objects.filter(author=request.user).order_by('-date')
+    context= {}
     if request.method == "POST":
         current_pw = request.POST.get("current_pw")
         user = request.user
@@ -167,10 +163,11 @@ def change_pw(request): #비밀번호 변경 기능
                 auth.login(request,user)
                 return redirect('mypage')
             else:
-                return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs, 'error':"새로운 비밀번호를 다시 확인해주세요."})
+                context.update({'error':"새로운 비밀번호를 다시 확인해주세요."})
         else:
-            return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs, 'error':"현재 비밀번호가 일치하지 않습니다."})
-    return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs})
+            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
+
+    return render(request, 'sgapp/change_pw.html', context)
 #def create(request):
     # 생략
   #profile.photo = request.FILES['photo']

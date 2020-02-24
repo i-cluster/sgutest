@@ -11,7 +11,7 @@
                 <div class="col-12 col-sm-auto mb-3">
                     <div class="mx-auto" style="width: 140px; height: 140px; background-color: rgb(233, 236, 239);">
                         {% if pf.photo %}
-                        <img src="{{ pf.photo.url }}" height="140px">
+                        <img src="{{ pf.photo.url }}" height=200>
                         {% endif %}
                     </div>
                 </div>
@@ -19,13 +19,8 @@
                     <div class="text-center text-sm-left mb-2 mb-sm-0">
                         <h4 class="pt-sm-2 pb-1 mb-0 text-nowrap">{{user.username}}</h4>
                         <p class="mb-0">{{user.first_name}}</p>
-                        <div class="text-muted"><small>
-                            {% if pf.title %}
-                            {{pf.title}}
-                            {% else %}
-                            ....................
-                            {% endif %}
-                        </small></div>
+                        <div class="text-muted"><small>........................</small></div>
+                       
                     </div>
                 </div>
             </div>
@@ -64,10 +59,10 @@
 
     <div class="card card-body col-12 col-sm-6 col-lg-5">
         <div class="p-3">
-            <h4>내가 올린 글</h4>
-            {% for c in crs %}
-            <h6><a class="text-info" href="{% url 'detail' c.id %}">{{c.name}}: {{c.prof}}</a></h6>
-            {% endfor %}
+            <h4>내가 올린 글 및 댓글</h4>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">대학수학: 홍길동</a></h6>
+            <h6><a href="" class="text-info">글로벌의사소통2: 홍길동</a></h6>
         </div>
     </div>
 
