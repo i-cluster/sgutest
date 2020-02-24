@@ -41,6 +41,10 @@ a:hover{
     color: #17A2B8 !important;
 }
 
+a.main{
+    color: #17A2B8;
+}
+
 
 /* base.html */
 button.navbar-toggler:focus{
