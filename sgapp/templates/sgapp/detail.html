@@ -3,6 +3,7 @@
 {% block content %}
 
 <div class="container">
+    <h3>[ 소근소근 ]</h3>
     <div class="arrow_box">
         <div class="section">
             <h3>{{crs.name}}</h3>
@@ -11,8 +12,13 @@
         작성자 : {{crs.author}}
         </div>
     </div>
-
+    {% if user.is_authenticated %}
     <div class="crs_menu">
+        {% if not lk %}
+            <a class="like" href="{% url 'like' crs.id %}">♡</a>
+        {% else %}
+            <a class="like" href="{% url 'unlike' crs.id %}">♥</a>
+        {% endif %}
         {% if crs.author == user.username %}
         <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
         <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
@@ -21,21 +27,16 @@
     </div>
     
     <div class="like">
-        {% if user.is_authenticated %}
-        {% if not lk %}
-            <a class="like" href="{% url 'like' crs.id %}">좋아요</a>
-        {% else %}
-            <a class="like" href="{% url 'unlike' crs.id %}">좋아요 취소</a>
-        {% endif %}<br>
-        {% endif %}
         {{lk.count}}명이 좋아합니다.
-        '좋아요'한 사람 : {% for l in lk %} {{l.author}} {% endfor %}
+        '좋아요'한 사람 {% for l in lk %} {{l.author}} {% endfor %}
     </div>
 
+    <br>
+    <br>
 
     <div class="com_container">
-        <h3>와글와글</h3>
-        {% if user.is_authenticated %}
+        <h3>[ 와글와글 ]</h3>
+
             <form class="com_write" action="{% url 'c_create' crs.pk %}" method="POST" enctype="multipart/form=data">
                 {% csrf_token %}
                 <div class="com_w1">
@@ -55,8 +56,8 @@
                     <button type="submit" class="btn btn-info">떠들기</button>
                 </div>
             </form><br>
-        {% endif %}
-
+       
+{% endif %}
         {% for cmt in cmt %}
         <div class="cmt_box">
             <div class="s-arrow_box">
@@ -81,7 +82,7 @@
                     ★★★★★
                     {% endif %}
                     </div>
-                    소곤소곤 : {{cmt.content}}<br>
+                    {{cmt.content}}<br>
                     떠든 사람 : {{cmt.author}}, {{cmt.date}}
                 </div>
             </div>
