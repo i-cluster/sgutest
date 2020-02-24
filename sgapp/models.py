@@ -45,4 +45,4 @@ class Profile(models.Model):
 
 class Tag(models.Model):
     objects = models.Manager()
-    name = models.CharField(max_length=20)
+    tname = models.CharField(max_length=20)
