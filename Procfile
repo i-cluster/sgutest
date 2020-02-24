@@ -1,1 +1,1 @@
-web: gunicorn SGU_TEST.wsgi --log-file -
+web:gunicorn sogeun.wsgi --log-file -
