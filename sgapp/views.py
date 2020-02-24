@@ -146,11 +146,12 @@ def mypage(request):
             return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform, 'crs':crs})
 
     else:
-        form = ProfileForm()
-        return render(request, 'sgapp/mypage.html', {'pf':pf, 'form':form, 'crs':crs})
+        pform = ProfileForm()
+        return render(request, 'sgapp/mypage.html', {'pf':pf, 'pform':pform, 'crs':crs})
 
 def change_pw(request): #비밀번호 변경 기능
-    context= {}
+    pf = Profile.objects.all()
+    crs = Course.objects.filter(author=request.user).order_by('-date')
     if request.method == "POST":
         current_pw = request.POST.get("current_pw")
         user = request.user
@@ -163,11 +164,10 @@ def change_pw(request): #비밀번호 변경 기능
                 auth.login(request,user)
                 return redirect('mypage')
             else:
-                context.update({'error':"새로운 비밀번호를 다시 확인해주세요."})
+                return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs, 'error':"새로운 비밀번호를 다시 확인해주세요."})
         else:
-            context.update({'error':"현재 비밀번호가 일치하지 않습니다."})
-
-    return render(request, 'sgapp/change_pw.html', context)
+            return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs, 'error':"현재 비밀번호가 일치하지 않습니다."})
+    return render(request, 'sgapp/change_pw.html', {'pf':pf, 'crs':crs})
 #def create(request):
     # 생략
   #profile.photo = request.FILES['photo']
