@@ -7,44 +7,6 @@
     font-style: normal; 
 }
 
-/* base_signin.html */
-button.navbar-toggler:focus{
-  outline-color: #17A2B8;
-}
-
-a.nav-title{
-  color: #17A2B8;
-  font-family: 'Recipekorea'; 
-  padding-right: 2rem;
-}
-
-.navnav{
-  flex-flow: row nowrap;
-  justify-content: space-between;
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: .5rem 1rem;
-}
-
-.nav-nav {
-  display: flex;
-  padding-left: 4rem;
-  margin-bottom: 0;
-  list-style: none;
-  color: white;
-}
-
-.nav-link {
-  color: rgb(207, 207, 207);
-}
-
-.nav-in {
-  float: right;
-}
-
-
  /* signin과 signup 페이지 */
 .signin_bg{
     display: -ms-flexbox;
@@ -119,7 +81,12 @@ a.nav-title{
   width: 85.6px;
   padding: 8px 16px;
 }
-
+.all_link{
+  height: 48px; 
+  padding-top: 20px; 
+  text-align: center; 
+  font-size: 18px;
+}
 .result_container{
   width: 100%;
   margin: 50px auto;
@@ -141,6 +108,7 @@ a.nav-title{
 min-height: 110px;
 padding: 0;
 }
+
 
 /* mypage.html */
 .my_container{

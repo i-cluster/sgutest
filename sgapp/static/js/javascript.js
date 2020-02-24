@@ -13,8 +13,4 @@ $(".inp-img").on('change', function(){
     showImg(this);
 });
  
-// $(document).ready( function() {
-//     $("#")
-// 	$("#pf_contents").load("change_pw.html");
-// });
 
