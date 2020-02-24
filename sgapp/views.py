@@ -113,6 +113,7 @@ def signup(request):#역시 GET/POST 방식을 사용하여 구현한다.
             else:
                 return render(request, 'sgapp/signup.html',{'f':form, 'error':'비밀번호와 비밀번호 확인이 다릅니다.'})#password와 password_check가 다를 것을 대비하여 error를 지정해준다.
         return render(request, 'sgapp/signup.html',{'f':form})
+        
 def signin(request):#로그인 기능
     if request.method == "GET":
         return render(request, 'sgapp/signin.html', {'f':SigninForm()} )

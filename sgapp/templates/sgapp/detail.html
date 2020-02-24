@@ -14,24 +14,27 @@
     </div>
     {% if user.is_authenticated %}
     <div class="crs_menu">
-        {% if not lk %}
-            <a class="like" href="{% url 'like' crs.id %}">♡</a>
-        {% else %}
-            <a class="like" href="{% url 'unlike' crs.id %}">♥</a>
-        {% endif %}
-        {% if crs.author == user.username %}
-        <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
-        <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
-        {% endif %}
-        <a class="like" href="{% url 'home' %}">뒤로가기</a>
+        <div class="writer_menu">
+            {% if crs.author == user.username %}
+            <a class="like" href="{% url 'edit' crs.id %}">수정하기</a> 
+            <a class="like" href="{% url 'delete' crs.id %}">삭제하기</a>
+            {% endif %}
+            <a class="like" href="{% url 'home' %}">뒤로가기</a>
+        </div>
     </div>
     
     <div class="like">
-        {{lk.count}}명이 좋아합니다.
+        <div class="heart">
+            {% if not lk %}
+            <a class="like" href="{% url 'like' crs.id %}">♡</a>
+            {% else %}
+            <a class="like" href="{% url 'unlike' crs.id %}">♥</a>
+            {% endif %}
+            {{lk.count}}명이 좋아합니다. <br>
+        </div>
         '좋아요'한 사람 {% for l in lk %} {{l.author}} {% endfor %}
     </div>
 
-    <br>
     <br>
 
     <div class="com_container">
@@ -55,7 +58,7 @@
                 <div class="com_w3">
                     <button type="submit" class="btn btn-info">떠들기</button>
                 </div>
-            </form><br>
+            </form>
        
 {% endif %}
         {% for cmt in cmt %}

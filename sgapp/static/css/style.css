@@ -207,7 +207,7 @@ a.like{
 .com_write{
     margin: 20px auto;
     display: grid;
-    grid-template-columns: 1fr 5fr 1.5fr;
+    grid-template-columns: 0.5fr 5fr 1.5fr;
     grid-template-areas: "com_w1 com_w2 com_w3"
 }
 
